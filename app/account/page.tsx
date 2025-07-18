@@ -97,12 +97,16 @@ export default function AccountPage() {
         </div>
       </header>
 
-      <main className="flex-1 pb-20">
+      <main className="flex-1 pb-20 md:pb-4">
         <div className="container px-4 py-6">
           {/* User summary section */}
-          <div className="bg-gradient-to-r from-rose-500 to-rose-600 rounded-2xl p-5 text-white mb-6">
+          <div className="bg-gradient-to-r from-rose-500 to-rose-600 rounded-2xl p-5 text-white mb-6 relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
+            
             <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-white/20 border-2 border-white/50">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden bg-white/20 border-2 border-white/50 shadow-lg">
                 <Image src={user.avatar || "/placeholder.svg"} alt={user.name} fill className="object-cover" />
               </div>
 
@@ -125,29 +129,29 @@ export default function AccountPage() {
           </div>
 
           {/* Stats section */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-3 gap-3 md:gap-4 mb-6">
             <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl font-bold text-rose-600">{user.totalOrders}</div>
+              <div className="text-xl md:text-2xl font-bold text-rose-600">{user.totalOrders}</div>
               <div className="text-xs text-gray-500">Buyurtmalar</div>
             </div>
             <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl font-bold text-rose-600">{user.bonusPoints}</div>
+              <div className="text-xl md:text-2xl font-bold text-rose-600">{user.bonusPoints}</div>
               <div className="text-xs text-gray-500">Bonuslar</div>
             </div>
             <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl font-bold text-rose-600">{user.level}</div>
+              <div className="text-xl md:text-2xl font-bold text-rose-600">{user.level}</div>
               <div className="text-xs text-gray-500">Daraja</div>
             </div>
           </div>
 
           {/* Menu items */}
-          <div className="bg-white rounded-xl shadow-sm">
+          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
             <div className="space-y-1">
               {menuItems.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
-                  className="flex items-center justify-between p-4 hover:bg-gray-50 rounded-lg"
+                  className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     <div className="text-gray-500">{item.icon}</div>
@@ -172,27 +176,27 @@ export default function AccountPage() {
       </main>
 
       <footer className="border-t bg-white">
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t z-40">
-          <div className="flex justify-between items-center px-6 py-3">
+        <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t z-40 md:hidden shadow-lg">
+          <div className="flex justify-between items-center px-4 py-2">
             <Link href="/" className="flex flex-col items-center">
-              <Home className="h-6 w-6" />
-              <span className="text-xs">Bosh sahifa</span>
+              <Home className="h-5 w-5" />
+              <span className="text-xs mt-1">Bosh sahifa</span>
             </Link>
             <Link href="/catalog" className="flex flex-col items-center">
-              <Grid className="h-6 w-6" />
-              <span className="text-xs">Katalog</span>
+              <Grid className="h-5 w-5" />
+              <span className="text-xs mt-1">Katalog</span>
             </Link>
             <Link href="/cart" className="flex flex-col items-center">
-              <ShoppingCart className="h-6 w-6" />
-              <span className="text-xs">Savat</span>
+              <ShoppingCart className="h-5 w-5" />
+              <span className="text-xs mt-1">Savat</span>
             </Link>
             <Link href="/orders" className="flex flex-col items-center">
-              <Menu className="h-6 w-6" />
-              <span className="text-xs">Buyurtma</span>
+              <Menu className="h-5 w-5" />
+              <span className="text-xs mt-1">Buyurtma</span>
             </Link>
             <Link href="/account" className="flex flex-col items-center text-rose-600">
-              <User className="h-6 w-6" />
-              <span className="text-xs">Kabinet</span>
+              <User className="h-5 w-5" />
+              <span className="text-xs mt-1">Kabinet</span>
             </Link>
           </div>
         </div>

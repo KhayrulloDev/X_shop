@@ -37,7 +37,7 @@ export default function ProductCard({
   return (
     <div
       className={cn(
-        "group relative border rounded-lg overflow-hidden hover:shadow-md transition-shadow bg-white h-full flex flex-col",
+        "group relative border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 bg-white h-full flex flex-col transform hover:scale-[1.02]",
         className,
       )}
     >
@@ -72,10 +72,12 @@ export default function ProductCard({
             src={image || "/placeholder.svg"}
             alt={name}
             fill
-            className="object-contain p-1 transition-transform group-hover:scale-105"
+            className="object-contain p-1 transition-transform duration-300 group-hover:scale-110"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             priority={id === "1"}
           />
+          {/* Gradient overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
 
         <div className="p-3 flex flex-col flex-grow">
@@ -101,8 +103,8 @@ export default function ProductCard({
       <div className="absolute bottom-1 right-2">
         <Button
           size="icon"
-          variant="outline"
-          className="h-7 w-7 rounded-full hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200"
+          variant="ghost"
+          className="h-7 w-7 rounded-full bg-white/80 backdrop-blur-sm hover:bg-rose-50 hover:text-rose-600 shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300"
           aria-label="Add to cart"
         >
           <ShoppingCart className="h-3 w-3" />

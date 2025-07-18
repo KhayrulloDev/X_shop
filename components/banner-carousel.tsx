@@ -104,19 +104,25 @@ export default function BannerCarousel({ banners }: BannerCarouselProps) {
             {banners.map((banner, index) => (
               <div
                 key={index}
-                className={cn("min-w-full rounded-xl text-white flex-shrink-0", banner.bgColor, banner.textColor)}
+                className={cn("min-w-full rounded-xl text-white flex-shrink-0 relative overflow-hidden", banner.bgColor, banner.textColor)}
                 aria-hidden={index !== currentIndex}
               >
+                {/* Animated background pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 left-0 w-32 h-32 bg-white rounded-full -translate-x-16 -translate-y-16 animate-pulse"></div>
+                  <div className="absolute bottom-0 right-0 w-24 h-24 bg-white rounded-full translate-x-12 translate-y-12 animate-pulse delay-1000"></div>
+                </div>
+                
                 <div className="p-6 md:p-8 lg:p-10 relative z-10">
                   <h2 className="text-2xl md:text-3xl font-bold mb-2">{banner.title}</h2>
                   <p className="text-base md:text-lg mb-4">{banner.subtitle}</p>
                   <div className="flex items-center gap-2 mb-4">
                     <span>Promokod:</span>
-                    <Badge className="bg-teal-400 text-black font-bold px-3 py-1">{banner.promo}</Badge>
+                    <Badge className="bg-white/90 text-black font-bold px-3 py-1 animate-bounce">{banner.promo}</Badge>
                   </div>
-                  <Button className="bg-white text-rose-600 hover:bg-gray-100">{banner.ctaText}</Button>
+                  <Button className="bg-white text-rose-600 hover:bg-gray-100 transform hover:scale-105 transition-transform duration-200">{banner.ctaText}</Button>
                 </div>
-                <div className="absolute -right-10 -bottom-10 opacity-20">
+                <div className="absolute -right-10 -bottom-10 opacity-20 animate-float">
                   <ShoppingCart className="h-32 w-32 md:h-40 md:w-40" />
                 </div>
               </div>

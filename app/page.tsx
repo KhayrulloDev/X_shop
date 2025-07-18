@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Search, Heart, ShoppingCart, User, Home, Grid, Menu, ChevronRight, ArrowRight } from "lucide-react"
+import { Search, Heart, ShoppingCart, User, Home, Grid, Menu, ChevronRight, ArrowRight, Store } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
@@ -86,6 +86,10 @@ export default function HomePage() {
           <div className="flex items-center gap-4">
             <Link href="/wishlist" aria-label="Wishlist">
               <Heart className="h-6 w-6" />
+            </Link>
+            <Link href="/become-seller" className="hidden sm:flex items-center gap-2 px-3 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition-colors">
+              <Store className="h-4 w-4" />
+              <span className="text-sm font-medium">Sotuvchi bo'ling</span>
             </Link>
           </div>
         </div>
@@ -325,12 +329,16 @@ export default function HomePage() {
         </section>
 
         {/* Featured brands */}
-        <section className="py-6 px-4 bg-white">
+        <section className="py-6 px-4 bg-white relative overflow-hidden">
+          {/* Decorative elements */}
+          <div className="absolute top-0 left-0 w-32 h-32 bg-rose-100 rounded-full -translate-x-16 -translate-y-16 opacity-50"></div>
+          <div className="absolute bottom-0 right-0 w-24 h-24 bg-purple-100 rounded-full translate-x-12 translate-y-12 opacity-50"></div>
+          
           <h2 className="text-xl font-semibold mb-5 text-center">Top Brendlar</h2>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
             {["Samsung", "Apple", "Xiaomi", "Sony", "LG", "Honor"].map((brand) => (
               <div key={brand} className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center hover:from-rose-100 hover:to-rose-200 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
                   <span className="font-bold text-gray-500">{brand.substring(0, 1)}</span>
                 </div>
                 <span className="mt-2 text-sm">{brand}</span>
@@ -340,7 +348,10 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="border-t bg-white">
+      <footer className="border-t bg-white relative overflow-hidden">
+        {/* Decorative wave */}
+        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-rose-500 via-purple-500 to-blue-500"></div>
+        
         <div className="container mx-auto px-4 py-8 hidden md:block">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
@@ -471,6 +482,10 @@ export default function HomePage() {
             <Link href="/account" className="flex flex-col items-center">
               <User className="h-6 w-6" />
               <span className="text-xs">Kabinet</span>
+            </Link>
+            <Link href="/become-seller" className="flex flex-col items-center text-rose-600">
+              <Store className="h-6 w-6" />
+              <span className="text-xs">Sotish</span>
             </Link>
           </div>
         </div>

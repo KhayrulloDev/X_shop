@@ -122,20 +122,20 @@ export default function CatalogPage() {
         </div>
       </header> */}
 
-      <main className="flex-1 pb-20">
+      <main className="flex-1 pb-20 md:pb-4">
         <div className="container px-4 py-6">
           {/* Search bar */}
-          <div className="mb-6 relative">
+          <div className="mb-6 relative max-w-2xl mx-auto">
             <Input
               placeholder="Mahsulotlarni qidirish..."
-              className="pl-10 pr-10 h-12 rounded-full"
+              className="pl-10 pr-10 h-12 rounded-full shadow-sm border-2 focus:border-rose-300"
               aria-label="Search products"
             />
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
             <Button
               variant="ghost"
               size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8"
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 hover:bg-rose-50"
               aria-label="Filter options"
             >
               <SlidersHorizontal className="h-5 w-5" />
@@ -202,7 +202,7 @@ export default function CatalogPage() {
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
               {products.map((product) => (
                 <ProductCard
                   key={product.id}
@@ -219,27 +219,29 @@ export default function CatalogPage() {
             </div>
           </section>
         </div>
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t z-40 md:hidden">
-          <div className="flex justify-between items-center px-6 py-3">
+        
+        {/* Mobile bottom navigation */}
+        <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t z-40 md:hidden shadow-lg">
+          <div className="flex justify-between items-center px-4 py-2">
             <Link href="/" className="flex flex-col items-center">
-              <Home className="h-6 w-6" />
-              <span className="text-xs">Bosh sahifa</span>
+              <Home className="h-5 w-5" />
+              <span className="text-xs mt-1">Bosh sahifa</span>
             </Link>
             <Link href="/catalog" className="flex flex-col items-center text-rose-600">
-              <Grid className="h-6 w-6" />
-              <span className="text-xs">Katalog</span>
+              <Grid className="h-5 w-5" />
+              <span className="text-xs mt-1">Katalog</span>
             </Link>
             <Link href="/cart" className="flex flex-col items-center">
-              <ShoppingCart className="h-6 w-6" />
-              <span className="text-xs">Savat</span>
+              <ShoppingCart className="h-5 w-5" />
+              <span className="text-xs mt-1">Savat</span>
             </Link>
             <Link href="/orders" className="flex flex-col items-center">
-              <Menu className="h-6 w-6" />
-              <span className="text-xs">Buyurtma</span>
+              <Menu className="h-5 w-5" />
+              <span className="text-xs mt-1">Buyurtma</span>
             </Link>
             <Link href="/account" className="flex flex-col items-center">
-              <User className="h-6 w-6" />
-              <span className="text-xs">Kabinet</span>
+              <User className="h-5 w-5" />
+              <span className="text-xs mt-1">Kabinet</span>
             </Link>
           </div>
         </div>
